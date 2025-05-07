@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aadhar card validation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      background-color: #e88888;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    header img {
+      height: 100px;
+      margin-right: 30px;
+    }
+
+    header h1 {
+      margin: 0 auto;
+      font-size: 36px;
+      color: #333;
+    }
+
+    hr {
+      border: 1px solid #999;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    table {
+      width: 100%;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      margin-left:250px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #003d99;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header h1 {
+        padding-left: 0;
+        padding-top: 20px;
+        font-size: 28px;
+      }
+
+      section {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="data:image/png;base64,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" alt="aadharcard">
+  <h1>Aadhar Card Validation</h1>
+</header>
+
+<hr>
+
+<section>
+  <form action="submit" method="post">
+    <table>
+      <tr>
+        <td><label for="number">Aadhaar number</label></td>
+        <td><input type="number" id="number" name="number" placeholder="Enter number" required></td>
+      </tr>
+    </table>
+    <input type="submit" value="submit">
+  </form>
+</section>
+</body>
+</html>
