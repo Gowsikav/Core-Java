@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Booking app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        main {
+          flex: 1;
+        }
+
+        footer {
+          background-color: #6c757d;
+          color: white;
+          text-align: center;
+          padding: 1rem;
+          bottom:0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark text-light p-3 mb-2">
+    <div class="container-fluid">
+               <img class="navbar-brand" src="data:image/png;base64,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"
+                    height="100px" alt="movie booking logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="book.html">Book Now!</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success text-white" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container text-center mt-5">
+    <h1 class="display-4 text-primary">Welcome to Movie Booking Application</h1>
+</main>
+
+<footer>
+    <p>&copy; 2025 Movie Booking App. All rights reserved.</p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
