@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>donation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg p-3 mb-2 bg-success text-white">
+        <div class="container-fluid">
+            <img class="navbar-brand" src="data:image/png;base64,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"
+                 height="100" alt="donation logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" aria-current="page" href="index.html">Home</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button type="submit" class="btn btn-outline-light">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-5">
+    <h2 class="fs-1 text-center">Donation Form</h2>
+    <form action="donate" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Donor Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" name="amount">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="cause" class="form-label">Cause</label>
+            <input type="text" class="form-control" id="cause" name="cause">
+        </div>
+
+        <input type="submit" class="bg-success text-white" value="Donate">
+    </form>
+</main>
+
+<nav class="navbar fixed-bottom bg-success">
+    <div class="container-fluid justify-content-center">
+        <span class="navbar-text text-white">
+            &copy; 2025 Donation Management App. All rights reserved.
+        </span>
+    </div>
+</nav>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+</body>
+</html>
