@@ -73,7 +73,7 @@
 
     <main class="container my-4 col-md-6">
       <h2 class="fs-1 text-center">Laboratory Report Form</h2>
-      <form action="laboratory" method="post">
+      <form action="laboratory" method="POST">
         <div class="mb-3">
           <label for="labname" class="form-label">Lab Name</label>
           <input type="text" class="form-control" id="labname" name="labName" />

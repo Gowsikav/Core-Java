@@ -2,26 +2,34 @@ package com.xworkz.forms.servlets;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/laboratory")
-public class LaboratoryServlet extends GenericServlet {
+public class LaboratoryServlet extends HttpServlet {
+
+    public LaboratoryServlet()
+    {
+        System.out.println("Laboratory servlet constructor");
+    }
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost method in Laboratory servlet");
+        String labName=req.getParameter("labName");
+        String technicianName=req.getParameter("techName");
+        String testName=req.getParameter("testName");
+        String testDate=req.getParameter("testDate");
+        String result=req.getParameter("result");
 
-        String labName=servletRequest.getParameter("labName");
-        String technicianName=servletRequest.getParameter("techName");
-        String testName=servletRequest.getParameter("testName");
-        String testDate=servletRequest.getParameter("testDate");
-        String result=servletRequest.getParameter("result");
-
-        System.out.println("Lab Name: "+labName);
-        System.out.println("Technician Name: "+technicianName);
-        System.out.println("Test Name: "+testName);
-        System.out.println("Test Date: "+testDate);
-        System.out.println("Results: "+result);
-
-        RequestDispatcher requestDispatcher=servletRequest.getRequestDispatcher("LaboratorySuccess.jsp");
-        requestDispatcher.forward(servletRequest,servletResponse);
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("LaboratorySuccess.jsp");
+        req.setAttribute("labName",labName);
+        req.setAttribute("technicianName",technicianName);
+        req.setAttribute("testName",testName);
+        req.setAttribute("testDate",testDate);
+        req.setAttribute("result",result);
+        requestDispatcher.forward(req,resp);
     }
 }

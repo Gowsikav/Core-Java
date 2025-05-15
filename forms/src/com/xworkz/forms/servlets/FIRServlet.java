@@ -2,26 +2,36 @@ package com.xworkz.forms.servlets;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/FIR")
-public class FIRServlet extends GenericServlet {
+public class FIRServlet extends HttpServlet {
+
+    public FIRServlet()
+    {
+        System.out.println("FIR Servlet constructor");
+    }
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        String firNumber=servletRequest.getParameter("firNumber");
-        String firDate=servletRequest.getParameter("firDate");
-        String policeStation=servletRequest.getParameter("policeStation");
-        String complainantName=servletRequest.getParameter("complainantName");
-        String details=servletRequest.getParameter("details");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost method in FIR servlet");
 
-        System.out.println("FIRServlet Number: "+firNumber);
-        System.out.println("FIRServlet Date: "+firDate);
-        System.out.println("Police Station: "+policeStation);
-        System.out.println("Complainant Name: "+complainantName);
-        System.out.println("Details: "+details);
+        String firNumber=req.getParameter("firNumber");
+        String firDate=req.getParameter("firDate");
+        String policeStation=req.getParameter("policeStation");
+        String complainantName=req.getParameter("complainantName");
+        String details=req.getParameter("details");
 
-        RequestDispatcher requestDispatcher=servletRequest.getRequestDispatcher("FIRSuccess.jsp");
-        requestDispatcher.forward(servletRequest,servletResponse);
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("FIRSuccess.jsp");
+        req.setAttribute("firNumber",firNumber);
+        req.setAttribute("firDate",firDate);
+        req.setAttribute("policeStation",policeStation);
+        req.setAttribute("complainantName",complainantName);
+        req.setAttribute("details",details);
+        requestDispatcher.forward(req,resp);
 
     }
 }

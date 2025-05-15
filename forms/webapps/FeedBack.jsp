@@ -73,7 +73,7 @@
 
     <main class="container my-4 col-md-6">
       <h2 class="fs-1 text-center">FeedBack Form</h2>
-      <form action="feedback" method="post">
+      <form action="feedback" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" id="name" name="name" />

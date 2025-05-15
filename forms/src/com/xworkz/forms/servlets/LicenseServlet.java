@@ -2,27 +2,35 @@ package com.xworkz.forms.servlets;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/license")
-public class LicenseServlet extends GenericServlet {
+public class LicenseServlet extends HttpServlet {
+
+    public LicenseServlet()
+    {
+        System.out.println("License Servlet constructor");
+    }
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost method in License Servlet");
+        String licenseNumber=req.getParameter("licenseNumber");
+        String name=req.getParameter("name");
+        String type=req.getParameter("type");
+        String issuedDate=req.getParameter("issuedDate");
+        String expiryDate=req.getParameter("expiryDate");
 
-        String licenseNumber=servletRequest.getParameter("licenseNumber");
-        String name=servletRequest.getParameter("name");
-        String type=servletRequest.getParameter("type");
-        String issuedDate=servletRequest.getParameter("issuedDate");
-        String expiryDate=servletRequest.getParameter("expiryDate");
-
-        System.out.println("LicenseServlet Number: "+licenseNumber);
-        System.out.println("LicenseServlet Holder: "+name);
-        System.out.println("LicenseServlet Type: "+type);
-        System.out.println("LicenseServlet IssuedDate: "+issuedDate);
-        System.out.println("LicenseServlet ExpiryDate: "+expiryDate);
-
-        RequestDispatcher requestDispatcher=servletRequest.getRequestDispatcher("LicenseSuccess.jsp");
-        requestDispatcher.forward(servletRequest,servletResponse);
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("LicenseSuccess.jsp");
+        req.setAttribute("licenseNumber",licenseNumber);
+        req.setAttribute("name",name);
+        req.setAttribute("type",type);
+        req.setAttribute("issuedDate",issuedDate);
+        req.setAttribute("expiryDate",expiryDate);
+        requestDispatcher.forward(req,resp);
 
 
     }

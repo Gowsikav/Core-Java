@@ -2,25 +2,35 @@ package com.xworkz.forms.servlets;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/feedback")
-public class FeedBackServlet extends GenericServlet {
+public class FeedBackServlet extends HttpServlet {
+
+    public FeedBackServlet()
+    {
+        System.out.println("FeedBackServlet Constructor");
+    }
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost Method in Feedback Servlet");
 
-        String name =servletRequest.getParameter("name");
-        String email =servletRequest.getParameter("email");
-        String rating =servletRequest.getParameter("rating");
-        String comments =servletRequest.getParameter("comments");
+        String name =req.getParameter("name");
+        String email =req.getParameter("email");
+        String rating =req.getParameter("rating");
+        String comments =req.getParameter("comments");
 
-        System.out.println("Name: "+name);
-        System.out.println("Email: "+email);
-        System.out.println("Rating: "+rating);
-        System.out.println("Comments: "+comments);
 
-        RequestDispatcher requestDispatcher=servletRequest.getRequestDispatcher("FeedbackSuccess.jsp");
-        requestDispatcher.forward(servletRequest,servletResponse);
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("FeedbackSuccess.jsp");
+        req.setAttribute("name",name);
+        req.setAttribute("email",email);
+        req.setAttribute("rating",rating);
+        req.setAttribute("comments",comments);
+        requestDispatcher.forward(req,resp);
 
     }
 }

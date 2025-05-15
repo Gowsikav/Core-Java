@@ -2,25 +2,34 @@ package com.xworkz.forms.servlets;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/donation")
-public class DonationServlet extends GenericServlet {
+public class DonationServlet extends HttpServlet {
+    public DonationServlet()
+    {
+        System.out.println("DonationServlet Constructor");
+    }
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        String firstName=servletRequest.getParameter("firstName");
-        String lastName=servletRequest.getParameter("lastName");
-        String email=servletRequest.getParameter("email");
-        String amount=servletRequest.getParameter("amount");
-        String cause=servletRequest.getParameter("cause");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        System.out.println("FirstName: "+firstName);
-        System.out.println("LastName: "+lastName);
-        System.out.println("Email: "+email);
-        System.out.println("Amount: "+amount);
-        System.out.println("Cause: "+cause);
+        System.out.println("doPost method in DonationServlet");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String email = req.getParameter("email");
+        String amount = req.getParameter("amount");
+        String cause = req.getParameter("cause");
 
-        RequestDispatcher requestDispatcher=servletRequest.getRequestDispatcher("DonationSuccess.jsp");
-        requestDispatcher.forward(servletRequest,servletResponse);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("DonationSuccess.jsp");
+        req.setAttribute("firstName",firstName);
+        req.setAttribute("lastName",lastName);
+        req.setAttribute("email",email);
+        req.setAttribute("amount",amount);
+        req.setAttribute("cause",cause);
+        requestDispatcher.forward(req, resp);
     }
 }

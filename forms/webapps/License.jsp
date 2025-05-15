@@ -73,7 +73,7 @@
 
     <main class="container my-4 col-md-6">
       <h2 class="fs-1 text-center">License Details</h2>
-      <form action="license" method="post">
+      <form action="license" method="POST">
         <div class="mb-3">
           <label for="number" class="form-label">License Number</label>
           <input

@@ -73,7 +73,7 @@
 
     <main class="container my-3 col-md-6">
       <h2 class="fs-1 text-center">FIR Form</h2>
-      <form action="FIR" method="post">
+      <form action="FIR" method="POST">
         <div class="mb-3">
           <label for="number" class="form-label">FIR Number</label>
           <input
