@@ -62,11 +62,29 @@
 
 <main class="container my-5">
     <h1 class="fs-1 text-center">Thanks for the Furniture Details </h1>
-    <h4 class="fs-1 text-center">Brand: ${brand}</h4>
-    <h4 class="fs-1 text-center">Model: ${modelName}</h4>
-    <h4 class="fs-1 text-center">Material: ${material}</h4>
-    <h4 class="fs-1 text-center">Size: ${size}</h4>
-    <h4 class="fs-1 text-center">Product Benefits: ${productBenefits}</h4>
+
+    <table class="table table-hover table-bordered border-primary">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">S.No</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Size</th>
+            <th scope="col">Model Name</th>
+            <th scope="col">Material</th>
+            <th scope="col">Product Benefits</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>${furnitureDto.brand}</td>
+            <td>${furnitureDto.size}</td>
+            <td>${furnitureDto.modelName}</td>
+            <td>${furnitureDto.material}</td>
+            <td>${furnitureDto.productBenefits}</td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 <nav class="navbar fixed-bottom bg-primary text-black">

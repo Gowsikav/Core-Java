@@ -1,5 +1,7 @@
 package com.xworkz.furniture.servlet;
 
+import com.xworkz.furniture.dto.FurnitureDto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,7 @@ public class FurnitureServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Post method in furniture servlet");
+        System.out.println("doPost method in furniture servlet");
 
         String brand=req.getParameter("brand");
         String size=req.getParameter("size");
@@ -25,12 +27,16 @@ public class FurnitureServlet extends HttpServlet {
         String modelName=req.getParameter("modelName");
         String productBenefits=req.getParameter("productBenefits");
 
+        FurnitureDto furnitureDto=new FurnitureDto();
+        furnitureDto.setBrand(brand);
+        furnitureDto.setSize(size);
+        furnitureDto.setMaterial(material);
+        furnitureDto.setModelName(modelName);
+        furnitureDto.setProductBenefits(productBenefits);
+
+
         RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture-success.jsp");
-        req.setAttribute("brand",brand);
-        req.setAttribute("size",size);
-        req.setAttribute("material",material);
-        req.setAttribute("modelName",modelName);
-        req.setAttribute("productBenefits",productBenefits);
+        req.setAttribute("furnitureDto",furnitureDto);
 
         requestDispatcher.forward(req,resp);
     }
