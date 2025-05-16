@@ -16,27 +16,23 @@
 <div class="container text-center mt-5 pt-5">
   <div class="card shadow p-4 border-success">
     <h2 class="text-success mb-3">Laboratory Report Submitted Successfully</h2>
-    <table class="table table-borderless w-50 mx-auto text-start">
+    <table class="table table-hover table-bordered border-primary">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">Lab Name</th>
+        <th scope="col">Technician Name</th>
+        <th scope="col">Test Name</th>
+        <th scope="col">Test Date</th>
+        <th scope="col">Result</th>
+      </tr>
+      </thead>
       <tbody>
       <tr>
-        <td class="fw-bold">Lab Name:</td>
-        <td>${labName}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Technician Name:</td>
-        <td>${technicianName}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Test Name:</td>
-        <td>${testName}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Test Date:</td>
-        <td>${testDate}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Results:</td>
-        <td>${result}</td>
+        <td>${laboratoryDto.labName}</td>
+        <td>${laboratoryDto.technicianName}</td>
+        <td>${laboratoryDto.testName}</td>
+        <td>${laboratoryDto.testDate}</td>
+        <td>${laboratoryDto.result}</td>
       </tr>
       </tbody>
     </table>

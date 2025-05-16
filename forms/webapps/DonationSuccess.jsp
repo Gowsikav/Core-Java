@@ -16,28 +16,24 @@
     <div class="container text-center mt-5 pt-5">
       <div class="card shadow p-4 border-success">
         <h2 class="text-success mb-3">Thank You for Your Donation!</h2>
-        <table class="table table-borderless w-50 mx-auto text-start">
+        <table class="table table-hover table-bordered border-primary">
+          <thead>
+          <tr class="table-primary">
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email-ID</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Cause</th>
+          </tr>
+          </thead>
           <tbody>
-            <tr>
-              <td class="fw-bold">First Name:</td>
-              <td>${firstName}</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Last Name:</td>
-              <td>${lastName}</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Email ID:</td>
-              <td>${email}</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Amount:</td>
-              <td>${amount}</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Cause:</td>
-              <td>${cause}</td>
-            </tr>
+          <tr>
+            <td>${donationDto.firstName}</td>
+            <td>${donationDto.lastName}</td>
+            <td>${donationDto.email}</td>
+            <td>${donationDto.amount}</td>
+            <td>${donationDto.cause}</td>
+          </tr>
           </tbody>
         </table>
 

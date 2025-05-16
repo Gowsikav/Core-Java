@@ -1,5 +1,7 @@
 package com.xworkz.forms.servlets;
 
+import com.xworkz.forms.dto.DonationDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,12 +26,15 @@ public class DonationServlet extends HttpServlet {
         String amount = req.getParameter("amount");
         String cause = req.getParameter("cause");
 
+        DonationDto donationDto=new DonationDto();
+        donationDto.setFirstName(firstName);
+        donationDto.setLastName(lastName);
+        donationDto.setEmail(email);
+        donationDto.setAmount(amount);
+        donationDto.setCause(cause);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("DonationSuccess.jsp");
-        req.setAttribute("firstName",firstName);
-        req.setAttribute("lastName",lastName);
-        req.setAttribute("email",email);
-        req.setAttribute("amount",amount);
-        req.setAttribute("cause",cause);
+        req.setAttribute("donationDto",donationDto);
         requestDispatcher.forward(req, resp);
     }
 }

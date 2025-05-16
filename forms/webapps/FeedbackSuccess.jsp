@@ -16,23 +16,21 @@
   <div class="container text-center mt-5 pt-5">
     <div class="card shadow p-4 border-success">
       <h2 class="text-success mb-3">Feedback Submitted Successfully</h2>
-      <table class="table table-borderless w-50 mx-auto text-start">
+      <table class="table table-hover table-bordered border-primary">
+        <thead>
+        <tr class="table-primary">
+          <th scope="col">Name</th>
+          <th scope="col">Email-ID</th>
+          <th scope="col">Ratings</th>
+          <th scope="col">Comments</th>
+        </tr>
+        </thead>
         <tbody>
         <tr>
-          <td class="fw-bold">Name:</td>
-          <td>${name}</td>
-        </tr>
-        <tr>
-          <td class="fw-bold">Email-ID:</td>
-          <td>${email}</td>
-        </tr>
-        <tr>
-          <td class="fw-bold">Ratings</td>
-          <td>${rating}</td>
-        </tr>
-        <tr>
-          <td class="fw-bold">Comments:</td>
-          <td>${comments}</td>
+          <td>${feedBackDto.name}</td>
+          <td>${feedBackDto.email}</td>
+          <td>${feedBackDto.rating}</td>
+          <td>${feedBackDto.comments}</td>
         </tr>
         </tbody>
       </table>

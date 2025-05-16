@@ -1,5 +1,7 @@
 package com.xworkz.forms.servlets;
 
+import com.xworkz.forms.dto.LaboratoryDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,12 +26,15 @@ public class LaboratoryServlet extends HttpServlet {
         String testDate=req.getParameter("testDate");
         String result=req.getParameter("result");
 
+        LaboratoryDto laboratoryDto=new LaboratoryDto();
+        laboratoryDto.setLabName(labName);
+        laboratoryDto.setTechnicianName(technicianName);
+        laboratoryDto.setTestName(testName);
+        laboratoryDto.setTestDate(testDate);
+        laboratoryDto.setResult(result);
+
         RequestDispatcher requestDispatcher=req.getRequestDispatcher("LaboratorySuccess.jsp");
-        req.setAttribute("labName",labName);
-        req.setAttribute("technicianName",technicianName);
-        req.setAttribute("testName",testName);
-        req.setAttribute("testDate",testDate);
-        req.setAttribute("result",result);
+    req.setAttribute("laboratoryDto",laboratoryDto);
         requestDispatcher.forward(req,resp);
     }
 }

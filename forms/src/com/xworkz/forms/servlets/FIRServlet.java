@@ -1,5 +1,7 @@
 package com.xworkz.forms.servlets;
 
+import com.xworkz.forms.dto.FIRDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,12 +27,15 @@ public class FIRServlet extends HttpServlet {
         String complainantName=req.getParameter("complainantName");
         String details=req.getParameter("details");
 
+        FIRDto firDto=new FIRDto();
+        firDto.setFirNumber(firNumber);
+        firDto.setFirDate(firDate);
+        firDto.setPoliceStation(policeStation);
+        firDto.setComplainantName(complainantName);
+        firDto.setDetails(details);
+
         RequestDispatcher requestDispatcher=req.getRequestDispatcher("FIRSuccess.jsp");
-        req.setAttribute("firNumber",firNumber);
-        req.setAttribute("firDate",firDate);
-        req.setAttribute("policeStation",policeStation);
-        req.setAttribute("complainantName",complainantName);
-        req.setAttribute("details",details);
+        req.setAttribute("firDto",firDto);
         requestDispatcher.forward(req,resp);
 
     }

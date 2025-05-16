@@ -16,27 +16,23 @@
 <div class="container text-center mt-5 pt-5">
   <div class="card shadow p-4 border-success">
     <h2 class="text-success mb-3">License Submitted Successfully!</h2>
-    <table class="table table-borderless w-50 mx-auto text-start">
+    <table class="table table-hover table-bordered border-primary">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">License Number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Issued Date</th>
+        <th scope="col">Expiry date</th>
+      </tr>
+      </thead>
       <tbody>
       <tr>
-        <td class="fw-bold">License Number:</td>
-        <td>${licenseNumber}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Name:</td>
-        <td>${name}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Type:</td>
-        <td>${type}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Issued Date:</td>
-        <td>${issuedDate}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Expiry Date:</td>
-        <td>${expiryDate}</td>
+        <td>${licenseDto.licenseNumber}</td>
+        <td>${licenseDto.name}</td>
+        <td>${licenseDto.type}</td>
+        <td>${licenseDto.issuedDate}</td>
+        <td>${licenseDto.expiryDate}</td>
       </tr>
       </tbody>
     </table>

@@ -1,5 +1,7 @@
 package com.xworkz.forms.servlets;
 
+import com.xworkz.forms.dto.LicenseDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,12 +26,15 @@ public class LicenseServlet extends HttpServlet {
         String issuedDate=req.getParameter("issuedDate");
         String expiryDate=req.getParameter("expiryDate");
 
+        LicenseDto licenseDto=new LicenseDto();
+        licenseDto.setLicenseNumber(licenseNumber);
+        licenseDto.setName(name);
+        licenseDto.setType(type);
+        licenseDto.setIssuedDate(issuedDate);
+        licenseDto.setExpiryDate(expiryDate);
+
         RequestDispatcher requestDispatcher=req.getRequestDispatcher("LicenseSuccess.jsp");
-        req.setAttribute("licenseNumber",licenseNumber);
-        req.setAttribute("name",name);
-        req.setAttribute("type",type);
-        req.setAttribute("issuedDate",issuedDate);
-        req.setAttribute("expiryDate",expiryDate);
+        req.setAttribute("licenseDto",licenseDto);
         requestDispatcher.forward(req,resp);
 
 

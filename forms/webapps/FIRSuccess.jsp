@@ -16,31 +16,27 @@
 <div class="container text-center mt-5 pt-5">
   <div class="card shadow p-4 border-success">
     <h2 class="text-success mb-3">FIR Submitted Successfully</h2>
-    <table class="table table-borderless w-50 mx-auto text-start">
+    <table class="table table-hover table-bordered border-primary">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">FIR Number</th>
+        <th scope="col">FIR Date</th>
+        <th scope="col">Police Station</th>
+        <th scope="col">Complainant Name</th>
+        <th scope="col">Details</th>
+      </tr>
+      </thead>
       <tbody>
       <tr>
-        <td class="fw-bold">FIR Number:</td>
-        <td>${firNumber}</td>
+        <td>${firDto.firNumber}</td>
+        <td>${firDto.firDate}</td>
+        <td>${firDto.policeStation}</td>
+        <td>${firDto.complainantName}</td>
+        <td>${firDto.details}</td>
       </tr>
-      <tr>
-        <td class="fw-bold">FIR Date:</td>
-        <td>${firDate}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Police Station</td>
-        <td>${policeStation}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Complainant Name:</td>
-        <td>${complainantName}</td>
-      </tr>
-      <tr>
-        <td class="fw-bold">Details:</td>
-        <td>${details}</td>
-      </tr>
-
       </tbody>
     </table>
+
     <p class="fs-5">Your FIR has been successfully recorded in our system.</p>
   </div>
 </div>
