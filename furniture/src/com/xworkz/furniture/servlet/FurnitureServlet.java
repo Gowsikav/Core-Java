@@ -1,6 +1,8 @@
 package com.xworkz.furniture.servlet;
 
 import com.xworkz.furniture.dto.FurnitureDto;
+import com.xworkz.furniture.dto.FurnitureServiceImpl;
+import com.xworkz.furniture.service.FurnitureService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,10 +36,20 @@ public class FurnitureServlet extends HttpServlet {
         furnitureDto.setModelName(modelName);
         furnitureDto.setProductBenefits(productBenefits);
 
+        FurnitureService furnitureService=new FurnitureServiceImpl();
+        boolean flag= furnitureService.save(furnitureDto);
 
-        RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture-success.jsp");
-        req.setAttribute("furnitureDto",furnitureDto);
-
-        requestDispatcher.forward(req,resp);
+        if(flag)
+        {
+            RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture-success.jsp");
+            req.setAttribute("furnitureDto",furnitureDto);
+            requestDispatcher.forward(req,resp);
+        }
+        else
+        {
+            RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture.jsp");
+            req.setAttribute("furnitureDto",furnitureDto);
+            requestDispatcher.forward(req,resp);
+        }
     }
 }
