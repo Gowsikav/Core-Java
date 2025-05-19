@@ -1,6 +1,8 @@
 package com.xworkz.forms.servlets;
 
 import com.xworkz.forms.dto.FIRDto;
+import com.xworkz.forms.service.FIRService;
+import com.xworkz.forms.service.FIRServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -34,9 +36,18 @@ public class FIRServlet extends HttpServlet {
         firDto.setComplainantName(complainantName);
         firDto.setDetails(details);
 
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("FIRSuccess.jsp");
-        req.setAttribute("firDto",firDto);
-        requestDispatcher.forward(req,resp);
+        FIRService firService=new FIRServiceImpl();
+        boolean flag=firService.save(firDto);
 
+        if(flag) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FIRSuccess.jsp");
+            req.setAttribute("firDto", firDto);
+            requestDispatcher.forward(req, resp);
+        }
+        else {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FIR.jsp");
+            req.setAttribute("firDto", firDto);
+            requestDispatcher.forward(req, resp);
+        }
     }
 }

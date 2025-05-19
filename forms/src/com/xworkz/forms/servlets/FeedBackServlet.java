@@ -1,6 +1,8 @@
 package com.xworkz.forms.servlets;
 
 import com.xworkz.forms.dto.FeedBackDto;
+import com.xworkz.forms.service.FeedBackService;
+import com.xworkz.forms.service.FeedBackServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -32,9 +34,18 @@ public class FeedBackServlet extends HttpServlet {
         feedBackDto.setRating(rating);
         feedBackDto.setComments(comments);
 
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("FeedbackSuccess.jsp");
-        req.setAttribute("feedBackDto",feedBackDto);
-        requestDispatcher.forward(req,resp);
+        FeedBackService feedBackService=new FeedBackServiceImpl();
+        boolean flag=feedBackService.save(feedBackDto);
 
+        if(flag) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FeedbackSuccess.jsp");
+            req.setAttribute("feedBackDto", feedBackDto);
+            requestDispatcher.forward(req, resp);
+        }
+        else {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("Feedback.jsp");
+            req.setAttribute("feedBackDto", feedBackDto);
+            requestDispatcher.forward(req, resp);
+        }
     }
 }
