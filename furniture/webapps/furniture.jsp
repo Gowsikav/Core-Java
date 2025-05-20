@@ -62,7 +62,8 @@
 
    <main class="container my-4 col-md-4">
          <h2 class="fs-1 text-center">Furniture Details</h2>
-         <form action="furniture" method="POST">
+     <h5 class="fs-1 text-center text-danger">${message}</h5>
+     <form action="furniture" method="POST">
 
            <div class="mb-3 col-auto">
              <label for="brand" class="form-label">Brand</label>

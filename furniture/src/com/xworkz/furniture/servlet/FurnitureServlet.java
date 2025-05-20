@@ -1,7 +1,7 @@
 package com.xworkz.furniture.servlet;
 
 import com.xworkz.furniture.dto.FurnitureDto;
-import com.xworkz.furniture.dto.FurnitureServiceImpl;
+import com.xworkz.furniture.service.FurnitureServiceImpl;
 import com.xworkz.furniture.service.FurnitureService;
 
 import javax.servlet.RequestDispatcher;
@@ -39,17 +39,17 @@ public class FurnitureServlet extends HttpServlet {
         FurnitureService furnitureService=new FurnitureServiceImpl();
         boolean flag= furnitureService.save(furnitureDto);
 
+        RequestDispatcher requestDispatcher;
         if(flag)
         {
-            RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture-success.jsp");
+            requestDispatcher = req.getRequestDispatcher("furniture-success.jsp");
             req.setAttribute("furnitureDto",furnitureDto);
-            requestDispatcher.forward(req,resp);
         }
         else
         {
-            RequestDispatcher  requestDispatcher=req.getRequestDispatcher("furniture.jsp");
-            req.setAttribute("furnitureDto",furnitureDto);
-            requestDispatcher.forward(req,resp);
+            requestDispatcher = req.getRequestDispatcher("furniture.jsp");
+            req.setAttribute("message","Details not saved");
         }
+        requestDispatcher.forward(req,resp);
     }
 }
