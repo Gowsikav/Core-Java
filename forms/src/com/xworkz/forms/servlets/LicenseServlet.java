@@ -38,15 +38,15 @@ public class LicenseServlet extends HttpServlet {
         LicenseService licenseService=new LicenseServiceImpl();
         boolean flag=licenseService.save(licenseDto);
 
+        RequestDispatcher requestDispatcher;
         if(flag) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LicenseSuccess.jsp");
+            requestDispatcher = req.getRequestDispatcher("LicenseSuccess.jsp");
             req.setAttribute("licenseDto", licenseDto);
-            requestDispatcher.forward(req, resp);
         }
         else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("License.jsp");
-            req.setAttribute("licenseDto", licenseDto);
-            requestDispatcher.forward(req, resp);
+            requestDispatcher = req.getRequestDispatcher("License.jsp");
+            req.setAttribute("message","Details not saved");
         }
+        requestDispatcher.forward(req, resp);
     }
 }

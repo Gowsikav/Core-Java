@@ -73,6 +73,7 @@
 
     <main class="container my-4 col-md-6">
       <h2 class="fs-1 text-center">Laboratory Report Form</h2>
+      <p class="fs-6 text-center text-danger">${message}</p>
       <form action="laboratory" method="POST">
         <div class="mb-3">
           <label for="labname" class="form-label">Lab Name</label>

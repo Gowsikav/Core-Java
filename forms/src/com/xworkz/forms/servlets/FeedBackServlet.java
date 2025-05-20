@@ -37,15 +37,15 @@ public class FeedBackServlet extends HttpServlet {
         FeedBackService feedBackService=new FeedBackServiceImpl();
         boolean flag=feedBackService.save(feedBackDto);
 
+        RequestDispatcher requestDispatcher;
         if(flag) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FeedbackSuccess.jsp");
+            requestDispatcher = req.getRequestDispatcher("FeedbackSuccess.jsp");
             req.setAttribute("feedBackDto", feedBackDto);
-            requestDispatcher.forward(req, resp);
         }
         else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("Feedback.jsp");
-            req.setAttribute("feedBackDto", feedBackDto);
-            requestDispatcher.forward(req, resp);
+            requestDispatcher = req.getRequestDispatcher("FeedBack.jsp");
+            req.setAttribute("message","form is not saved");
         }
+        requestDispatcher.forward(req, resp);
     }
 }

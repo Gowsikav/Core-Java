@@ -38,15 +38,15 @@ public class LaboratoryServlet extends HttpServlet {
         LaboratoryService laboratoryService=new LaboratoryServiceImpl();
         boolean flag=laboratoryService.save(laboratoryDto);
 
+        RequestDispatcher requestDispatcher;
         if(flag) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LaboratorySuccess.jsp");
+            requestDispatcher = req.getRequestDispatcher("LaboratorySuccess.jsp");
             req.setAttribute("laboratoryDto", laboratoryDto);
-            requestDispatcher.forward(req, resp);
         }
         else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("Laboratory.jsp");
-            req.setAttribute("laboratoryDto", laboratoryDto);
-            requestDispatcher.forward(req, resp);
+            requestDispatcher = req.getRequestDispatcher("Laboratory.jsp");
+            req.setAttribute("message","Details not saved");
         }
+        requestDispatcher.forward(req, resp);
     }
 }

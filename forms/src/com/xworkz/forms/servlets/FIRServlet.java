@@ -39,15 +39,16 @@ public class FIRServlet extends HttpServlet {
         FIRService firService=new FIRServiceImpl();
         boolean flag=firService.save(firDto);
 
+        RequestDispatcher requestDispatcher;
         if(flag) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FIRSuccess.jsp");
+            requestDispatcher = req.getRequestDispatcher("FIRSuccess.jsp");
             req.setAttribute("firDto", firDto);
             requestDispatcher.forward(req, resp);
         }
         else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FIR.jsp");
-            req.setAttribute("firDto", firDto);
-            requestDispatcher.forward(req, resp);
+            requestDispatcher = req.getRequestDispatcher("FIR.jsp");
+            req.setAttribute("message", "Details not saved");
         }
+        requestDispatcher.forward(req, resp);
     }
 }

@@ -73,6 +73,7 @@
 
     <main class="container my-3 col-md-6">
       <h2 class="fs-1 text-center">Donation Form</h2>
+      <p class="fs-6 text-center text-danger">${message}</p>
       <form action="donation" method="POST">
         <div class="mb-3">
           <label for="firstname" class="form-label">First Name</label>
