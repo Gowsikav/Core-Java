@@ -7,14 +7,14 @@ public class ProductDto {
     }
     private String productName;
     private String type;
-    private String incomingPrice;
-    private String sellingPrice;
-    private String marketPrice;
+    private double incomingPrice;
+    private double sellingPrice;
+    private double marketPrice;
     private String description;
     private String brand;
-    private String quantity;
+    private int quantity;
     private String color;
-    private String weight;
+    private double weight;
     private String manufacturingDate;
     private String warranty;
     private String returnPolicy;
@@ -35,27 +35,27 @@ public class ProductDto {
         this.type = type;
     }
 
-    public String getIncomingPrice() {
+    public double getIncomingPrice() {
         return incomingPrice;
     }
 
-    public void setIncomingPrice(String incomingPrice) {
+    public void setIncomingPrice(double incomingPrice) {
         this.incomingPrice = incomingPrice;
     }
 
-    public String getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(String sellingPrice) {
+    public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
-    public String getMarketPrice() {
+    public double getMarketPrice() {
         return marketPrice;
     }
 
-    public void setMarketPrice(String marketPrice) {
+    public void setMarketPrice(double marketPrice) {
         this.marketPrice = marketPrice;
     }
 
@@ -75,11 +75,11 @@ public class ProductDto {
         this.brand = brand;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -91,11 +91,11 @@ public class ProductDto {
         this.color = color;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

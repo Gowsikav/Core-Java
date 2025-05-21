@@ -40,60 +40,36 @@ public class ProductServiceImpl implements ProductService{
             System.err.println("Invalid Product Type");
             return false;
         }
-        String incomingPriceStr=productDto.getIncomingPrice();
-        double incomingPrice=0;
-        if(incomingPriceStr!=null)
+        double incomingPrice=productDto.getIncomingPrice();
+        if(incomingPrice>=10 && incomingPrice<=50000)
         {
-            incomingPrice=Double.parseDouble(incomingPriceStr);
-            if(incomingPrice>=10 && incomingPrice<=50000)
-            {
-                System.out.println("Valid Incoming Price");
-            }
-            else {
-                System.err.println("Invalid Incoming Price");
-                return false;
-            }
+            System.out.println("Valid Incoming Price");
         }
         else {
             System.err.println("Invalid Incoming Price");
             return false;
         }
-        String sellingPriceStr=productDto.getSellingPrice();
-        double sellingPrice=0;
-        if(sellingPriceStr!=null)
+
+        double sellingPrice=productDto.getSellingPrice();
+        if(sellingPrice>=10 && sellingPrice<=50000)
         {
-            sellingPrice=Double.parseDouble(sellingPriceStr);
-            if(sellingPrice>=10 && sellingPrice<=50000)
-            {
-                System.out.println("Valid Selling Price");
-            }
-            else {
-                System.err.println("Invalid Selling Price");
-                return false;
-            }
+            System.out.println("Valid Selling Price");
         }
         else {
             System.err.println("Invalid Selling Price");
             return false;
         }
-        String marketPriceStr=productDto.getMarketPrice();
-        double marketPrice=0;
-        if(marketPriceStr!=null)
+
+        double marketPrice=productDto.getMarketPrice();
+        if(marketPrice>=10 && marketPrice<=50000)
         {
-            marketPrice=Double.parseDouble(marketPriceStr);
-            if(marketPrice>=10 && marketPrice<=50000)
-            {
-                System.out.println("Valid Market Price");
-            }
-            else {
-                System.err.println("Invalid Market Price");
-                return false;
-            }
+            System.out.println("Valid Market Price");
         }
         else {
             System.err.println("Invalid Market Price");
             return false;
         }
+
         String description= productDto.getDescription();
         if(description!=null && description.length()>=3 && description.length()<=100)
         {
@@ -112,19 +88,10 @@ public class ProductServiceImpl implements ProductService{
             System.err.println("Invalid Brand");
             return false;
         }
-        String quantityStr=productDto.getQuantity();
-        int quantity=0;
-        if(quantityStr!=null)
+        int quantity=productDto.getQuantity();
+        if(quantity>=1 && quantity<=10)
         {
-            quantity=Integer.parseInt(quantityStr);
-            if(quantity>=1 && quantity<=10)
-            {
-                System.out.println("Valid Quantity");
-            }
-            else {
-                System.err.println("Invalid Quantity");
-                return false;
-            }
+            System.out.println("Valid Quantity");
         }
         else {
             System.err.println("Invalid Quantity");
@@ -139,19 +106,10 @@ public class ProductServiceImpl implements ProductService{
             System.err.println("Invalid Color");
             return false;
         }
-        String weightStr=productDto.getWeight();
-        double weight=0;
-        if(weightStr!=null)
+        double weight=productDto.getWeight();
+        if(weight>=1 && weight<=100)
         {
-            weight=Double.parseDouble(weightStr);
-            if(weight>=1 && weight<=100)
-            {
-                System.out.println("Valid Weight");
-            }
-            else {
-                System.err.println("Invalid Weight");
-                return false;
-            }
+            System.out.println("Valid Weight");
         }
         else {
             System.err.println("Invalid Weight");

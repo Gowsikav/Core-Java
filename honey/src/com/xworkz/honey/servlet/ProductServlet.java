@@ -25,14 +25,56 @@ public class ProductServlet extends HttpServlet {
 
         String productName=req.getParameter("productName");
         String type=req.getParameter("type");
-        String incomingPrice=req.getParameter("incomingPrice");
-        String sellingPrice=req.getParameter("sellingPrice");
-        String marketPrice=req.getParameter("marketPrice");
+        String incomingPriceStr=req.getParameter("incomingPrice");
+        double incomingPrice=0;
+        if(incomingPriceStr!=null)
+        {
+            incomingPrice=Double.parseDouble(incomingPriceStr);
+        }
+        else {
+            System.err.println("Invalid Incoming Price");
+        }
+
+        String sellingPriceStr=req.getParameter("sellingPrice");
+        double sellingPrice=0;
+        if(sellingPriceStr!=null)
+        {
+            sellingPrice=Double.parseDouble(sellingPriceStr);
+        }
+        else {
+            System.err.println("Invalid Selling Price");
+        }
+        String marketPriceStr=req.getParameter("marketPrice");
+        double marketPrice=0;
+        if(marketPriceStr!=null)
+        {
+            marketPrice=Double.parseDouble(marketPriceStr);
+        }
+        else {
+            System.err.println("Invalid Market Price");
+
+        }
         String description=req.getParameter("description");
         String brand=req.getParameter("brand");
-        String quantity=req.getParameter("quantity");
+        String quantityStr=req.getParameter("quantity");
+        int quantity=0;
+        if(quantityStr!=null)
+        {
+            quantity=Integer.parseInt(quantityStr);
+        }
+        else {
+            System.err.println("Invalid Quantity");
+        }
         String color=req.getParameter("color");
-        String weight=req.getParameter("weight");
+        String weightStr=req.getParameter("weight");
+        double weight=0;
+        if(weightStr!=null)
+        {
+            weight=Double.parseDouble(weightStr);
+        }
+        else {
+            System.err.println("Invalid Weight");
+        }
         String manufacturingDate=req.getParameter("manufacturingDate");
         String warranty=req.getParameter("warranty");
         String returnPolicy=req.getParameter("returnPolicy");
