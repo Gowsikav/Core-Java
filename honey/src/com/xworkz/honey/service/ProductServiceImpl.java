@@ -1,13 +1,14 @@
 package com.xworkz.honey.service;
 
 import com.xworkz.honey.dto.ProductDto;
-
-import javax.servlet.ServletRequest;
+import com.xworkz.honey.repository.ProductRepository;
 
 public class ProductServiceImpl implements ProductService{
-    public ProductServiceImpl()
+    private ProductRepository productRepository;
+    public ProductServiceImpl(ProductRepository productRepository)
     {
         System.out.println("Product service implementation constructor");
+        this.productRepository=productRepository;
     }
 
     @Override
@@ -143,6 +144,6 @@ public class ProductServiceImpl implements ProductService{
             return false;
         }
 
-        return true;
+        return productRepository.persist(productDto);
     }
 }

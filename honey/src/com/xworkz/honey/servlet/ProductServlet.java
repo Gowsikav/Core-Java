@@ -1,6 +1,8 @@
 package com.xworkz.honey.servlet;
 
 import com.xworkz.honey.dto.ProductDto;
+import com.xworkz.honey.repository.ProductRepository;
+import com.xworkz.honey.repository.ProductRepositoryImpl;
 import com.xworkz.honey.service.ProductService;
 import com.xworkz.honey.service.ProductServiceImpl;
 
@@ -14,9 +16,19 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
+
+    private ProductService productService;
+
     public ProductServlet()
     {
         System.out.println("Product Servlet Constructor");
+    }
+
+    @Override
+    public void init() {
+        System.out.println("init method in product servlet");
+        ProductRepository productRepository =new ProductRepositoryImpl();
+        this.productService=new ProductServiceImpl(productRepository);
     }
 
     @Override
@@ -94,7 +106,6 @@ public class ProductServlet extends HttpServlet {
         productDto.setWarranty(warranty);
         productDto.setReturnPolicy(returnPolicy);
 
-        ProductService productService=new ProductServiceImpl();
         boolean flag=productService.save(productDto);
 
         RequestDispatcher requestDispatcher;
