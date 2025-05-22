@@ -39,7 +39,7 @@ public class ProductServlet extends HttpServlet {
         String type=req.getParameter("type");
         String incomingPriceStr=req.getParameter("incomingPrice");
         double incomingPrice=0;
-        if(incomingPriceStr!=null)
+        if(incomingPriceStr!=null && !incomingPriceStr.isEmpty())
         {
             incomingPrice=Double.parseDouble(incomingPriceStr);
         }
@@ -49,7 +49,7 @@ public class ProductServlet extends HttpServlet {
 
         String sellingPriceStr=req.getParameter("sellingPrice");
         double sellingPrice=0;
-        if(sellingPriceStr!=null)
+        if(sellingPriceStr!=null && !sellingPriceStr.isEmpty())
         {
             sellingPrice=Double.parseDouble(sellingPriceStr);
         }
@@ -58,7 +58,7 @@ public class ProductServlet extends HttpServlet {
         }
         String marketPriceStr=req.getParameter("marketPrice");
         double marketPrice=0;
-        if(marketPriceStr!=null)
+        if(marketPriceStr!=null && !marketPriceStr.isEmpty())
         {
             marketPrice=Double.parseDouble(marketPriceStr);
         }
@@ -70,7 +70,7 @@ public class ProductServlet extends HttpServlet {
         String brand=req.getParameter("brand");
         String quantityStr=req.getParameter("quantity");
         int quantity=0;
-        if(quantityStr!=null)
+        if(quantityStr!=null && !quantityStr.isEmpty())
         {
             quantity=Integer.parseInt(quantityStr);
         }
@@ -80,7 +80,7 @@ public class ProductServlet extends HttpServlet {
         String color=req.getParameter("color");
         String weightStr=req.getParameter("weight");
         double weight=0;
-        if(weightStr!=null)
+        if(weightStr!=null && !weightStr.isEmpty())
         {
             weight=Double.parseDouble(weightStr);
         }
