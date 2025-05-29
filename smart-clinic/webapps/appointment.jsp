@@ -10,7 +10,6 @@
     <style>
         .input-color {
             border: 2px solid rgb(127, 209, 241);
-            ;
         }
 
         .form-style {
@@ -57,6 +56,7 @@
     <div class="container d-flex justify-content-center align-items-center mt-3">
         <form class="form-style p-4 rounded shadow" action="appointment" method="POST">
             <h3 class="text-center mb-4">Appointment Form</h3>
+            <p class="text-center mb-4 text-danger">${message}</p>
 
             <div class="mb-3">
                 <label for="name" class="form-label">Patient Name</label>
@@ -69,7 +69,7 @@
             <div class="mb-3">
                 <label for="timeSlot" class="form-label">Time Slot</label>
                 <select class="input-color form-select" id="timeSlot" name="timeSlot" required>
-                    <option >-- Choose a Time Slot --</option>
+                    <option value="">-- Choose a Time Slot --</option>
                     <option value="9am">09:00 AM - 09:30 AM</option>
                     <option value="10am">10:00 AM - 10:30 AM</option>
                     <option value="11am">11:00 AM - 11:30 AM</option>
@@ -80,7 +80,7 @@
             <div class="mb-3">
                 <label for="doctor" class="form-label">Select Doctor</label>
                 <select class="input-color form-select" id="doctor" name="doctorName" required>
-                    <option >-- Choose a Doctor --</option>
+                    <option value="">-- Choose a Doctor --</option>
                     <option value="Dr-smith">Dr. John Smith - Cardiologist</option>
                     <option value="Dr-jones">Dr. Emily Jones - Dermatologist</option>
                     <option value="Dr-patel">Dr. Raj Patel - General Physician</option>
