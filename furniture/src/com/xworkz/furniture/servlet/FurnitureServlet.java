@@ -36,7 +36,7 @@ public class FurnitureServlet extends HttpServlet {
         furnitureDto.setModelName(modelName);
         furnitureDto.setProductBenefits(productBenefits);
 
-        FurnitureService furnitureService=new FurnitureServiceImpl();
+        FurnitureService furnitureService= new FurnitureServiceImpl();
         boolean flag= furnitureService.save(furnitureDto);
 
         RequestDispatcher requestDispatcher;
