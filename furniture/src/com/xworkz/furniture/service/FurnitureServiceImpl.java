@@ -1,6 +1,8 @@
 package com.xworkz.furniture.service;
 
 import com.xworkz.furniture.dto.FurnitureDto;
+import com.xworkz.furniture.repository.FurnitureRepository;
+import com.xworkz.furniture.repository.FurnitureRepositoryImpl;
 
 public class FurnitureServiceImpl implements FurnitureService {
     public FurnitureServiceImpl()
@@ -67,6 +69,8 @@ public class FurnitureServiceImpl implements FurnitureService {
             System.err.println("Invalid product benefits");
             return false;
         }
-        return true;
+        FurnitureRepository furnitureRepository=new FurnitureRepositoryImpl();
+
+        return furnitureRepository.persist(furnitureDto);
     }
 }
