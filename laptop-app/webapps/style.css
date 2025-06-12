@@ -1,0 +1,34 @@
+.container{
+    place-items: center; 
+    min-height: 50vh;
+    align-items: center;
+}
+
+html, body {
+      height: 100%;
+      margin: 0;
+      background-color: rgb(161, 234, 237);
+    }
+    .left-side {
+      background: url('images/laptop-icon.png') no-repeat center center;
+      background-size: contain;
+      padding: 10px;
+    }
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      background-color: rgb(161, 234, 237);
+    }
+    input {
+  border-radius: 0.75rem;
+  border: 1px solid #dad2ce;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: rgb(203, 199, 199);
+}
+
+input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
