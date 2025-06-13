@@ -73,6 +73,7 @@ public class LaptopServlet extends HttpServlet {
         else {
             requestDispatcher=req.getRequestDispatcher("laptop-details.jsp");
             req.setAttribute("message","Details Incorrect");
+            req.setAttribute("laptopDto",laptopDto);
         }
         requestDispatcher.forward(req,resp);
     }

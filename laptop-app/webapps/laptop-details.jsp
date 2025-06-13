@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<a href="index.jsp" class="btn btn-outline-primary mt-3">Back</a>
     <p class="h1 text-center pt-3">Laptop Details Form</p>
     <p class="text-center pt-3 text-danger">${message}</p>
     <div class="container d-flex justify-content-center align-items-center">
@@ -19,27 +20,27 @@
             <form class="p-3 fs-5" action="laptop" method="POST">
                 <div class="mb-3">
                     <label for="brand" class="form-label">Brand</label>
-                    <input type="text" class="form-control" id="brand" name="brand">
+                    <input type="text" class="form-control" id="brand" name="brand" value="${laptopDto.brand}">
                 </div>
                 <div class="mb-3">
                     <label for="model" class="form-label">Model</label>
-                    <input type="text" class="form-control" id="model" name="model">
+                    <input type="text" class="form-control" id="model" name="model" value="${laptopDto.model}">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" step="any" inputmode="decimal" class="form-control" id="price" name="price">
+                    <input type="number" step="any" inputmode="decimal" class="form-control" id="price" name="price" value="${laptopDto.price}">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Availability</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="isAvailable" id="availableYes" value="Yes">
+                        <input class="form-check-input" type="radio" name="isAvailable" id="availableYes" value="Yes" ${laptopDto.available=="true"?'checked':''}>
                         <label class="form-check-label" for="availableYes">
                             Yes
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="isAvailable" id="availableNo" value="No">
+                        <input class="form-check-input" type="radio" name="isAvailable" id="availableNo" value="No" ${laptopDto.available=="false"?'checked':''}>
                         <label class="form-check-label" for="availableNo">
                             No
                         </label>
@@ -51,15 +52,15 @@
                     <select class="form-select" id="warranty" name="warranty">
                         <option value="null" selected>Open this select menu</option>
                         <option value="No-warranty">No-Warranty</option>
-                        <option value="6 Months">6 months</option>
-                        <option value="1 Year">1 Year</option>
-                        <option value="2 Years">2 Years</option>
+                        <option value="6Months">6 months</option>
+                        <option value="1Year">1 Year</option>
+                        <option value="2Years">2 Years</option>
 
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="manufacturedDate" class="form-label">Manufactured Date</label>
-                    <input type="date"  class="form-control" id="manufacturedDate" name="manufacturedDate">
+                    <input type="date"  class="form-control" id="manufacturedDate" name="manufacturedDate" value="${laptopDto.manufacturedDate}">
 
                 </div>
 
