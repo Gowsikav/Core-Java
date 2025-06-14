@@ -16,19 +16,22 @@
     <p class="h1 text-center pt-3">Laptop Details Form</p>
     <p class="text-center pt-3 text-danger">${message}</p>
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="col-md-2 col-lg-5">
-            <form class="p-3 fs-5" action="laptop" method="POST">
+        <div class="col-md-4 col-lg-5 col-sm-2">
+            <form class="p-3 fs-5" action="laptop" method="POST" id="form">
                 <div class="mb-3">
                     <label for="brand" class="form-label">Brand</label>
                     <input type="text" class="form-control" id="brand" name="brand" value="${laptopDto.brand}">
+                    <span id="brandError" class="error small text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="model" class="form-label">Model</label>
                     <input type="text" class="form-control" id="model" name="model" value="${laptopDto.model}">
+                    <span id="modelError" class="error small text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
                     <input type="number" step="any" inputmode="decimal" class="form-control" id="price" name="price" value="${laptopDto.price}">
+                    <span id="priceError" class="error small text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -45,6 +48,7 @@
                             No
                         </label>
                     </div>
+                    <span id="availableError" class="error small text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -57,11 +61,12 @@
                         <option value="2Years">2 Years</option>
 
                     </select>
+                    <span id="warrantyError" class="error small"></span>
                 </div>
                 <div class="mb-3">
                     <label for="manufacturedDate" class="form-label">Manufactured Date</label>
                     <input type="date"  class="form-control" id="manufacturedDate" name="manufacturedDate" value="${laptopDto.manufacturedDate}">
-
+                    <span id="manufacturedDateError" class="error small text-danger"></span>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,7 +74,7 @@
         </div>
     </div>
 
-
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
