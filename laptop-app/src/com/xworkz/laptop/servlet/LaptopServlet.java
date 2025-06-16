@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Optional;
 
 @WebServlet(urlPatterns="/laptop")
 public class LaptopServlet extends HttpServlet {
@@ -76,5 +77,24 @@ public class LaptopServlet extends HttpServlet {
             req.setAttribute("laptopDto",laptopDto);
         }
         requestDispatcher.forward(req,resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doGet method in Laptop servlet");
+        String laptopIdStr=req.getParameter("laptopId");
+        if(!(laptopIdStr == null && laptopIdStr.isEmpty()))
+        {
+            int laptopId=Integer.parseInt(laptopIdStr);
+
+            LaptopService laptopService=new LaptopServiceImpl();
+            Optional<LaptopDto> optionalLaptopDto= laptopService.findById(laptopId);
+            if(optionalLaptopDto.isPresent()){
+                System.out.println("Laptop Id is found");
+            }
+            else {
+                System.out.println("Laptop Id is not found");
+            }
+        }
     }
 }

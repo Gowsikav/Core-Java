@@ -5,6 +5,7 @@ import com.xworkz.laptop.repository.LaptopRepository;
 import com.xworkz.laptop.repository.LaptopRepositoryImpl;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class LaptopServiceImpl implements LaptopService{
 
@@ -76,5 +77,19 @@ public class LaptopServiceImpl implements LaptopService{
         System.out.println("Validation Done All fields are correct");
         LaptopRepository laptopRepository=new LaptopRepositoryImpl();
         return laptopRepository.persist(laptopDto);
+    }
+
+    @Override
+    public Optional<LaptopDto> findById(int laptopId) {
+        System.out.println("findById method in laptop service implementation");
+        if(laptopId>0)
+        {
+            System.out.println("laptopId is valid");
+
+            LaptopRepository laptopRepository=new LaptopRepositoryImpl();
+            laptopRepository.findById(laptopId);
+        }
+
+        return LaptopService.super.findById(laptopId);
     }
 }

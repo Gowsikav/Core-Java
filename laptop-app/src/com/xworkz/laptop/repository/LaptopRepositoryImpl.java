@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class LaptopRepositoryImpl implements LaptopRepository {
     public LaptopRepositoryImpl()
@@ -39,5 +40,11 @@ public class LaptopRepositoryImpl implements LaptopRepository {
         }
         System.out.println("Details not saved");
         return false;
+    }
+
+    @Override
+    public Optional<LaptopDto> findById(int laptopId) {
+        System.out.println("findById method in Laptop Repository implementation");
+        return LaptopRepository.super.findById(laptopId);
     }
 }

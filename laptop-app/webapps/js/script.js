@@ -107,3 +107,5 @@ function validateManufacturedDate() {
   }
   return true;
 }
+
+
