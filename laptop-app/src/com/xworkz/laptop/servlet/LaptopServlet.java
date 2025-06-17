@@ -83,18 +83,24 @@ public class LaptopServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet method in Laptop servlet");
         String laptopIdStr=req.getParameter("laptopId");
-        if(!(laptopIdStr == null && laptopIdStr.isEmpty()))
+        if (laptopIdStr != null && !laptopIdStr.isEmpty())
         {
             int laptopId=Integer.parseInt(laptopIdStr);
 
             LaptopService laptopService=new LaptopServiceImpl();
             Optional<LaptopDto> optionalLaptopDto= laptopService.findById(laptopId);
-            if(optionalLaptopDto.isPresent()){
+            if(optionalLaptopDto.isPresent()) {
                 System.out.println("Laptop Id is found");
+                LaptopDto laptopDto = optionalLaptopDto.get();
+                req.setAttribute("message", "Laptop Details");
+                req.setAttribute("laptopDto", laptopDto);
             }
             else {
                 System.out.println("Laptop Id is not found");
+                req.setAttribute("errorMessage","Laptop Id is not Found");
             }
+            RequestDispatcher  requestDispatcher = req.getRequestDispatcher("LaptopFindId.jsp");
+            requestDispatcher.forward(req,resp);
         }
     }
 }

@@ -87,9 +87,9 @@ public class LaptopServiceImpl implements LaptopService{
             System.out.println("laptopId is valid");
 
             LaptopRepository laptopRepository=new LaptopRepositoryImpl();
-            laptopRepository.findById(laptopId);
+            return laptopRepository.findById(laptopId);
         }
-
-        return LaptopService.super.findById(laptopId);
+        System.out.println("Laptop id is invalid");
+        return Optional.empty();
     }
 }
