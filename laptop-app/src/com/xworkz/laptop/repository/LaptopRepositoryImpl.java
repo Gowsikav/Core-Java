@@ -5,8 +5,7 @@ import com.xworkz.laptop.utils.JdbcConnection;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class LaptopRepositoryImpl implements LaptopRepository {
@@ -22,11 +21,20 @@ public class LaptopRepositoryImpl implements LaptopRepository {
         try{
             Class.forName(JdbcConnection.DRIVER.getProperty());
             Connection connection= DriverManager.getConnection(JdbcConnection.URL.getProperty(),JdbcConnection.USER_NAME.getProperty(), JdbcConnection.SECRET.getProperty());
-            Statement statement=connection.createStatement();
-            String query="INSERT INTO laptop_details VALUES(0,'"+laptopDto.getBrand()+"','"+laptopDto.getModel()+"'," +
-                    " "+laptopDto.getPrice()+","+laptopDto.isAvailable()+",'"+laptopDto.getWarranty()+"','"+laptopDto.getManufacturedDate()+"'," +
-                    " '"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyy-MM-dd HH:mm:ss"))+"')";
-            int row=statement.executeUpdate(query);
+
+            String query = "INSERT INTO laptop_details (brand, model, price, is_available, warranty, manufactured_date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            System.out.println(query);
+            PreparedStatement preparedStatement=connection.prepareStatement(query);
+
+            preparedStatement.setString(1,laptopDto.getBrand());
+            preparedStatement.setString(2,laptopDto.getModel());
+            preparedStatement.setDouble(3,laptopDto.getPrice());
+            preparedStatement.setBoolean(4,laptopDto.isAvailable());
+            preparedStatement.setString(5,laptopDto.getWarranty());
+            preparedStatement.setDate(6, Date.valueOf(laptopDto.getManufacturedDate()));
+            preparedStatement.setTimestamp(7,laptopDto.getCreated_at());
+
+            int row=preparedStatement.executeUpdate();
             if(row>0)
             {
                 System.out.println("Details saved in DB");
@@ -46,9 +54,11 @@ public class LaptopRepositoryImpl implements LaptopRepository {
         try{
             Class.forName(JdbcConnection.DRIVER.getProperty());
             Connection connection=DriverManager.getConnection(JdbcConnection.URL.getProperty(),JdbcConnection.USER_NAME.getProperty(), JdbcConnection.SECRET.getProperty());
-            Statement statement=connection.createStatement();
-            String query="SELECT * FROM laptop_details AS laptop where laptop.id="+laptopId+";";
-            ResultSet resultSet=statement.executeQuery(query);
+
+            String query="SELECT * FROM laptop_details WHERE id = ?";
+            PreparedStatement preparedStatement=connection.prepareStatement(query);
+            preparedStatement.setInt(1,laptopId);
+            ResultSet resultSet=preparedStatement.executeQuery();
             while(resultSet.next())
             {
                 String brand=resultSet.getString("brand");
@@ -57,8 +67,9 @@ public class LaptopRepositoryImpl implements LaptopRepository {
                 boolean isAvailable=resultSet.getBoolean("is_available");
                 String warranty=resultSet.getString("warranty");
                 LocalDate manufacturedDate=resultSet.getDate("manufactured_date").toLocalDate();
+                Timestamp created_at=resultSet.getTimestamp("created_at");
 
-                LaptopDto laptopDto=new LaptopDto(brand,model,price,isAvailable,warranty,manufacturedDate);
+                LaptopDto laptopDto=new LaptopDto(brand,model,price,isAvailable,warranty,manufacturedDate,created_at);
                 return Optional.of(laptopDto);
             }
 
@@ -67,5 +78,42 @@ public class LaptopRepositoryImpl implements LaptopRepository {
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public LaptopDto[] findAll() {
+        System.out.println("findAll method in Laptop Repository implementation");
+        int index=0;
+
+        LaptopDto[] laptopDtos=new LaptopDto[1];
+        try{
+            Class.forName(JdbcConnection.DRIVER.getProperty());
+            Connection connection=DriverManager.getConnection(JdbcConnection.URL.getProperty(),JdbcConnection.USER_NAME.getProperty(), JdbcConnection.SECRET.getProperty());
+
+            String query="SELECT * FROM laptop_details;";
+            PreparedStatement preparedStatement=connection.prepareStatement(query);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next())
+            {
+                LaptopDto laptopDto=new LaptopDto();
+                laptopDto.setBrand(resultSet.getString("brand"));
+                laptopDto.setModel(resultSet.getString("model"));
+                laptopDto.setPrice(resultSet.getDouble("price"));
+                laptopDto.setAvailable(resultSet.getBoolean("is_available"));
+                laptopDto.setWarranty(resultSet.getString("warranty"));
+                laptopDto.setManufacturedDate(resultSet.getDate("manufactured_date").toLocalDate());
+                laptopDto.setCreated_at(resultSet.getTimestamp("created_at"));
+
+                laptopDtos[index]=laptopDto;
+                index++;
+                laptopDtos = Arrays.copyOf(laptopDtos, index+1);
+
+            }
+
+        } catch (SQLException |ClassNotFoundException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return laptopDtos;
     }
 }

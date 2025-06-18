@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public class LaptopServiceImpl implements LaptopService{
 
+    LaptopRepository laptopRepository=new LaptopRepositoryImpl();
+
     public LaptopServiceImpl()
     {
         System.out.println("Laptop service Implementation constructor");
@@ -75,7 +77,6 @@ public class LaptopServiceImpl implements LaptopService{
         }
 
         System.out.println("Validation Done All fields are correct");
-        LaptopRepository laptopRepository=new LaptopRepositoryImpl();
         return laptopRepository.persist(laptopDto);
     }
 
@@ -91,5 +92,12 @@ public class LaptopServiceImpl implements LaptopService{
         }
         System.out.println("Laptop id is invalid");
         return Optional.empty();
+    }
+
+    @Override
+    public LaptopDto[] findAll() {
+        System.out.println("findAll method in Laptop service implementation");
+
+        return laptopRepository.findAll();
     }
 }

@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,4 +25,5 @@ public class LaptopDto {
     private boolean isAvailable;
     private String warranty;
     private LocalDate manufacturedDate;
+    private Timestamp created_at= Timestamp.valueOf(LocalDateTime.now());
 }

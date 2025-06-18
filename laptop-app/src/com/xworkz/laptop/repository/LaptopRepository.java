@@ -11,4 +11,6 @@ public interface LaptopRepository {
     {
         return Optional.empty();
     }
+
+    LaptopDto[] findAll();
 }

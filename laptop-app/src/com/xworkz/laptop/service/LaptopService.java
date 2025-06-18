@@ -10,4 +10,6 @@ public interface LaptopService {
     default Optional<LaptopDto> findById(int laptopId){
         return Optional.empty();
     }
+
+    LaptopDto[] findAll();
 }

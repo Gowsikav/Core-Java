@@ -15,12 +15,15 @@
 
             <div class="col-md-6 left-side"></div>
 
-                <div class="col-md-6 right-side">
+                <div class="col-md-6 right-side gap-2">
                     <h1 class="display-4 mb-4">Laptop App</h1>
                     <p class="fs-4 mb-4">Don't disturb, deadline in progress. </p>
                     <a class="btn btn-lg btn-outline-primary w-25" href="laptop-details.jsp" role="button">Laptop Details</a>
                     <a class="btn btn-lg btn-outline-primary w-25" href="LaptopFindId.jsp" role="button">Laptop Find</a>
-
+                    <form action="find" method="get">
+                        <button type="submit" class="btn btn-lg btn-outline-primary w-25">Find All</button>
+                    </form>
+                    <h5>${message}</h5>
                 </div>
             
 

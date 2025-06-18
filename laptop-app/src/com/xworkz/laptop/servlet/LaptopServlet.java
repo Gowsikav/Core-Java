@@ -58,7 +58,13 @@ public class LaptopServlet extends HttpServlet {
             System.out.println(e.getMessage());
         }
 
-        LaptopDto laptopDto=new LaptopDto(brand,model,price,isAvailable,warranty,manufacturedDate);
+        LaptopDto laptopDto=new LaptopDto();
+        laptopDto.setBrand(brand);
+        laptopDto.setModel(model);
+        laptopDto.setPrice(price);
+        laptopDto.setAvailable(isAvailable);
+        laptopDto.setWarranty(warranty);
+        laptopDto.setManufacturedDate(manufacturedDate);
 
         LaptopService laptopService=new LaptopServiceImpl();
         boolean saved=laptopService.save(laptopDto);
