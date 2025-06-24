@@ -1,38 +1,32 @@
 package com.xworkz.jerry.runner;
 
 import com.xworkz.jerry.dto.FurnitureDto;
+import com.xworkz.jerry.repository.FurnitureRepository;
+import com.xworkz.jerry.repository.FurnitureRepositoryImpl;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class FurnitureRunner {
     public static void main(String[] args) {
 
-        FurnitureDto furnitureDto1=new FurnitureDto("IKEA", "Wood", 5000, "Rectangle", "Brown");
-        FurnitureDto furnitureDto2=new FurnitureDto("Urban Ladder", "Metal", 8500, "Round", "Black");
-        FurnitureDto furnitureDto3=new FurnitureDto("Pepperfry", "Plastic", 2000, "Square", "White");
-        FurnitureDto furnitureDto4=new FurnitureDto("HomeTown", "Wood", 7400, "Oval", "Natural");
-        FurnitureDto furnitureDto5=new FurnitureDto("Durian", "Leather", 15000, "Rectangle", "Beige");
-        FurnitureDto furnitureDto6=new FurnitureDto("Nilkamal", "Plastic", 1500, "Round", "Blue");
-        FurnitureDto furnitureDto7=new FurnitureDto("Godrej Interio", "Metal", 6500, "Square", "Gray");
-        FurnitureDto furnitureDto8=new FurnitureDto("Featherlite", "Wood", 9000, "Rectangle", "Cherry");
-        FurnitureDto furnitureDto9=new FurnitureDto("Zuari", "Glass", 8000, "Oval", "Transparent");
-        FurnitureDto furnitureDto10=new FurnitureDto("Damro", "Fabric", 7900, "L-shape", "Maroon");
+        FurnitureRepository furnitureRepository=new FurnitureRepositoryImpl();
+        Collection<FurnitureDto> collection=furnitureRepository.findAll();
 
-        Collection<FurnitureDto> collection=new ArrayList<>();
-        collection.add(furnitureDto1);
-        collection.add(furnitureDto2);
-        collection.add(furnitureDto3);
-        collection.add(furnitureDto4);
-        collection.add(furnitureDto5);
-        collection.add(furnitureDto6);
-        collection.add(furnitureDto7);
-        collection.add(furnitureDto8);
-        collection.add(furnitureDto9);
-        collection.add(furnitureDto10);
-
+        System.out.println("Furniture brand list which are all round shape:");
         for(FurnitureDto furnitureDto:collection)
         {
+            if(furnitureDto.getShape().equalsIgnoreCase("round")) {
+                System.out.println("Furniture Brand: " + furnitureDto.getBrand());
+            }
+        }
+
+        System.out.println("================================");
+
+        Iterator<FurnitureDto> iterator=collection.iterator();
+        while(iterator.hasNext())
+        {
+            FurnitureDto furnitureDto=iterator.next();
             System.out.println("Furniture Brand: "+furnitureDto.getBrand());
             System.out.println("Material: "+furnitureDto.getMaterial());
             System.out.println("Price: "+furnitureDto.getPrice());
@@ -40,6 +34,5 @@ public class FurnitureRunner {
             System.out.println("Shape: "+furnitureDto.getShape());
             System.out.println("================================");
         }
-
     }
 }
