@@ -18,18 +18,19 @@ public class FridgeRunner {
 
         System.out.println("Total size :" + fridgeDTOS.size());
 
-        System.out.println("Fridge brand list which capacity is less than 150 litres");
-        for (FridgeDTO fridgeDTO : fridgeDTOS) {
-            if (fridgeDTO.getCapacityInLiters() < 150) {
-                System.out.println(fridgeDTO.getBrand());
-            }
-        }
-
         System.out.println("======================");
 
         Iterator<FridgeDTO> iterator = fridgeDTOS.iterator();
         while (iterator.hasNext()) {
             FridgeDTO fridgeDTO = iterator.next();
+            if(fridgeDTO.getBrand().equalsIgnoreCase("LG"))
+            {
+                iterator.remove();
+                System.out.println("Removed :"+fridgeDTO);
+            }
+        }
+        System.out.println("dto after removal:");
+        for (FridgeDTO fridgeDTO : fridgeDTOS) {
             System.out.println(fridgeDTO);
         }
 
