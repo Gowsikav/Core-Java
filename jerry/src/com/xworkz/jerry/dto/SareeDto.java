@@ -1,12 +1,14 @@
 package com.xworkz.jerry.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
 @ToString
 @AllArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class SareeDto {
     private String occasionType;
     private String color;

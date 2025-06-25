@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Getter
 @ToString
 @AllArgsConstructor
+@EqualsAndHashCode
 public class FridgeDTO implements Serializable {
 
     private String brand;
