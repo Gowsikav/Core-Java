@@ -1,4 +1,7 @@
-package com.xworkz.tom.dto;
+package com.xworkz.tom.runner;
+
+import com.xworkz.tom.dto.BrandDto;
+import com.xworkz.tom.dto.ComputerDto;
 
 import java.util.HashMap;
 import java.util.Map;
