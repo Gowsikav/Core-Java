@@ -5,6 +5,7 @@ import com.xworkz.tom.dto.ProjectDto;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ProjectRunner {
     public static void main(String[] args) {
@@ -67,5 +68,14 @@ public class ProjectRunner {
         map.keySet().forEach(System.out::println);
         System.out.println("Values");
         map.values().forEach(e-> System.out.println(Arrays.toString(e)));
-    }
+
+        System.out.println("Entries");
+        Set<Map.Entry<ProjectDto,String[]>> entrySet=map.entrySet();
+        entrySet.forEach(e->{
+            ProjectDto projectDto=e.getKey();
+            String[] str=e.getValue();
+            System.out.println(projectDto);
+            System.out.println(Arrays.toString(str));
+        });
+     }
 }

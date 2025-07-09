@@ -6,6 +6,7 @@ import com.xworkz.tom.dto.VendorDto;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ProductVendorRunner {
     public static void main(String[] args) {
@@ -94,5 +95,14 @@ public class ProductVendorRunner {
         map.keySet().forEach(System.out::println);
         System.out.println("Values");
         map.values().forEach(System.out::println);
+
+        System.out.println("Entries");
+        Set<Map.Entry<ProductDto,VendorDto>> entrySet=map.entrySet();
+        entrySet.forEach(e->{
+            ProductDto productDto=e.getKey();
+            VendorDto vendorDto=e.getValue();
+            System.out.println(productDto);
+            System.out.println(vendorDto);
+        });
     }
 }

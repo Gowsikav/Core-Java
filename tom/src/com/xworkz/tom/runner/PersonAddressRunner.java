@@ -5,6 +5,7 @@ import com.xworkz.tom.dto.PersonDto;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class PersonAddressRunner {
     public static void main(String[] args) {
@@ -92,6 +93,13 @@ public class PersonAddressRunner {
         map.keySet().forEach(e-> System.out.println("PersonDetails: "+e));
         map.values().forEach(e-> System.out.println("Address: "+e));
 
-
+        System.out.println("Entries");
+        Set<Map.Entry<PersonDto,AddressDto>> entrySet=map.entrySet();
+        entrySet.forEach(e->{
+            PersonDto personDto=e.getKey();
+            AddressDto addressDto=e.getValue();
+            System.out.println(personDto);
+            System.out.println(addressDto);
+        });
     }
 }

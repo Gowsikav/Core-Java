@@ -6,6 +6,7 @@ import com.xworkz.tom.internal.StaffList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class UniversityRunner {
     public static void main(String[] args) {
@@ -71,5 +72,14 @@ public class UniversityRunner {
         mapHashMap.keySet().forEach(System.out::println);
         System.out.println("Values");
         mapHashMap.values().forEach(System.out::println);
+
+        System.out.println("Entries");
+        Set<Map.Entry<UniversityDto,Map<String,String>>> entrySet=mapHashMap.entrySet();
+        entrySet.forEach(e->{
+            UniversityDto universityDto=e.getKey();
+            Map<String,String> map=e.getValue();
+            System.out.println(universityDto);
+            System.out.println(map);
+        });
     }
 }

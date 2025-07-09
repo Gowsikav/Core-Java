@@ -2,10 +2,7 @@ package com.xworkz.tom.runner;
 
 import com.xworkz.tom.dto.DepartmentDto;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DepartmentRunner {
     public static void main(String[] args) {
@@ -68,5 +65,14 @@ public class DepartmentRunner {
         listMap.keySet().forEach(System.out::println);
         System.out.println("Values");
         listMap.values().forEach(System.out::println);
+
+        System.out.println("Entries");
+        Set<Map.Entry<DepartmentDto, List<String>>> entrySet=listMap.entrySet();
+        entrySet.forEach(e->{
+            DepartmentDto departmentDto=e.getKey();
+            List<String> list=e.getValue();
+            System.out.println(departmentDto);
+            System.out.println(list);
+        });
     }
 }
