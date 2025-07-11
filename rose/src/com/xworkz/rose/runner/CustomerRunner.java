@@ -39,7 +39,9 @@ public class CustomerRunner {
 
         System.out.println("============================================ ");
         System.out.println("Collect all unique Country");
-        customerList.stream().distinct().
-                forEach(customerDTO -> System.out.println(customerDTO.getPassportDTO().getCountryDTO().getName()));
+//        customerList.stream().distinct().
+//                forEach(customerDTO -> System.out.println(customerDTO.getPassportDTO().getCountryDTO().getName()));
+
+        customerList.stream().map(customerDTO->customerDTO.getPassportDTO().getCountryDTO().getName()).distinct().forEach(System.out::println);
     }
 }
