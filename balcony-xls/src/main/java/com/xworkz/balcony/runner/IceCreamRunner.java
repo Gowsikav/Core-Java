@@ -106,6 +106,12 @@ public class IceCreamRunner {
                             e.getAddOn(),
                             e.getCouponCode()))
                     .forEach(System.out::println);
+
+
+            System.out.println("==========================================================");
+            String filePath = "D:\\Java\\Excel files\\IceCream-orderWrite.xlsx";
+
+            IceCreamWrite.orderWrite(filePath,list);
         }
     }
 }

@@ -8,13 +8,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class ReadExcelFile {
+public class ReadWriteExcelFile {
 
     public static List<CountryDTO> readData(String filePath) {
         List<CountryDTO> list = new ArrayList<>();
@@ -66,12 +65,50 @@ public class ReadExcelFile {
         return list;
     }
 
+    public static void writeData(String path, List<CountryDTO> list) {
+        System.out.println("writeData in excel method");
+
+        Workbook workbook = null;
+        if (path.endsWith(".xlsx"))
+            workbook = new XSSFWorkbook();
+        else if (path.endsWith(".xls"))
+            workbook = new HSSFWorkbook();
+        Sheet sheet;
+        if (workbook != null) {
+            sheet = workbook.createSheet("Countries");
+        } else return;
+        Iterator<CountryDTO> iterator = list.iterator();
+        int rowIndex = 0;
+        while (iterator.hasNext()) {
+            CountryDTO countryDTO = iterator.next();
+            Row row = sheet.createRow(rowIndex++);
+            Cell cell1 = row.createCell(0);
+            cell1.setCellValue(countryDTO.getCountryName());
+            Cell cell2 = row.createCell(1);
+            cell2.setCellValue(countryDTO.getCountryCode());
+        }
+        try (FileOutputStream fileOutputStream = new FileOutputStream(path)) {
+            workbook.write(fileOutputStream);
+            System.out.println("File write successfully");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 
     public static void main(String[] args) {
 
         String filePath = "D:\\Java\\Excel files\\CountryList.xlsx";
         List<CountryDTO> countryList = readData(filePath);
         countryList.stream().map(e -> e.getCountryName() + "---" + e.getCountryCode()).forEach(System.out::println);
+
+        System.out.println("-----------------------------------------");
+        String path="D:\\Java\\Excel files\\CountryWrite.xlsx";
+        writeData(path, countryList);
 
     }
 }
